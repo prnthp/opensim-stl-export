@@ -20,3 +20,9 @@ Want to export a model from OpenSim? Wegotchufam.
 1.  Follow OpenSim 4.0 installation [here](https://simtk-confluence.stanford.edu/display/OpenSim/Scripting+in+Python#ScriptinginPython-SettingupyourPythonscriptingenvironment) (YMMV for MacOS!)
 1. `conda install numpy numpy-stl`
 1. *Optional for vtp2stl.py* `conda install vtk`
+
+## Whazzat reference_cube.stl? 
+Bodies with no mesh (sometimes used as joints) will have that in place. Replace that with your own stl file if you prefer other brialliant shapes.
+
+## Limitations
+It's a quick and dirty thing I threw together. So it only exports the first attached mesh of each body. Please extend this and help make OpenSim more friendly for engineers!
