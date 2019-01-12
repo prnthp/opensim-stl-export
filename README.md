@@ -26,3 +26,6 @@ Bodies with no mesh (sometimes used as joints) will have that in place. Replace 
 
 ## Limitations
 It's a quick and dirty thing I threw together. So it only exports the first attached mesh of each body. Please extend this and help make OpenSim more friendly for engineers!
+
+## Wait I came here for that virtual world sim
+This is for the *other* [OpenSim](https://opensim.stanford.edu/).
