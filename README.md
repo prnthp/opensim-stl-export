@@ -1,4 +1,4 @@
-# Export OpenSim 4.0 models to STL
+# 💪💪💪 Export OpenSim 4.0 models to STL
 Want to export a model from OpenSim? Wegotchufam.
 
 ## Tutorial
