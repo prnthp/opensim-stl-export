@@ -1,0 +1,9 @@
+solid reference_arrow
+   facet normal 0.000000e+00 0.000000e+00 1.000000e+00
+      outer loop
+         vertex 5.000000e-03 3.292061e-20 0.000000e+00
+         vertex 0.000000e+00 1.000000e-02 0.000000e+00
+         vertex 0.000000e+00 3.192099e-313 0.000000e+00
+      endloop
+   endfacet
+endsolid
