@@ -137,7 +137,7 @@ def process_files(infile, outdir, jointsonly):
 
         for i in range(3):
             t = np.copy(geom.t)
-            r_body = t[0:3,0:3]
+            R_body = t[0:3,0:3]
 
             coord_name = st.getValueAsObject().getPropertyByIndex(i).getValueAsObject().getPropertyByIndex(0).toString().strip('()')
             if coord_name == '':
@@ -146,16 +146,20 @@ def process_files(infile, outdir, jointsonly):
             r_name.append(coord_name)
             r_str.append(st.getValueAsObject().getPropertyByIndex(i).getValueAsObject().getPropertyByIndex(1).toString().strip('()').split(' '))
             r.append([float(j) for j in r_str[-1]])
-            # rotate arrow (0,1,0)?
-            a = np.array([0,1,0])
-            R.append(rotate_from_to(a, r[-1]))
+            # arrow (0,1,0)
+            y_axis = np.array([0,1,0])
 
-            # apply rotation to align axis
-            R[-1] = np.dot(r_body,R[-1])
+            # rorate around y-axis to coordinate
+            R_coord = rotation_matrix(coords[coord_name], y_axis)
 
-            # apply rotation from Coordinate (opensim)
-            R_coord = rotation_matrix(coords[coord_name], r[-1], point=None)
-            R[-1] = np.dot(R_coord[0:3,0:3],R[-1])
+            # rotation to align y-axis to rotational axis
+            R_rot = rotate_from_to(y_axis, r[-1])
+
+            # Original solution (wrong, but gets the job half-done)
+            # R.append(np.dot(R_body,R_rot)) # align y-axis
+
+            R.append(np.dot(R_body,R_rot)) # align y-axi
+            R[-1] = np.dot(R[-1],R_coord[0:3,0:3]) # rotate around rot-axis
 
             t[0:3,0:3] = R[-1]
             t[0,3] = p.get(0) # but point to actual pivot
